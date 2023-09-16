@@ -100,6 +100,27 @@ export function GlobalProvider({ children }) {
     setPeople(peopleTemp)
   }
 
+  function getAmountDue(name) {
+    people.forEach(person => {
+      if (person.name === name) {
+        const foodsSelected = person.foodSelected
+        let price = 0
+
+        foodsSelected.forEach(selectedFood => {
+          food.forEach(food => {
+            if (food.name === selectedFood) {
+              price += food.cost / food.count
+            }
+          })
+        })
+
+        return price
+      }
+    })
+
+    return 0
+  }
+
   const value = {
     food,
     people,
