@@ -121,6 +121,12 @@ export function GlobalProvider({ children }) {
     return 0
   }
 
+  function sendVenmo(person){
+      let amount = getAmountDue(person.name);
+      let s = "https://venmo.com/?txn=charge&audience=public&recipients=" + person.venmo + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
+  }
+
+
   const value = {
     food,
     people,

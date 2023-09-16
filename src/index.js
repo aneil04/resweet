@@ -23,6 +23,6 @@ let amount = 5
 let s1 = "https://venmo.com/?txn=charge&audience=public&recipients=" + recipients + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
 console.log(s1)
 
-// let arr = [s1, s2, s3, s4, s5]
+let arr = [s1, s2, s3, s4, s5]
 
 
