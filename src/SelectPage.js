@@ -1,9 +1,9 @@
-import { Box, Button, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Divider, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 
 export default function SelectPage() {
-  const {food, people, addPerson, toggleFood} = useGlobalContext()
+  const { food, people, addPerson, toggleFood } = useGlobalContext()
 
   const [modalOpen, setModalOpen] = useState(false)
   const [modalName, setModalName] = useState(false);
@@ -17,21 +17,21 @@ export default function SelectPage() {
   return (
     <Box sx={{ width: "100%" }} pt={"20%"} display={"flex"} alignItems={"center"} justifyContent={"center"} flexDirection={"column"}>
       <Stack direction={"column"} alignItems={"center"} spacing={2}>
-        <List sx={{ flexDirection: "row", display: "flex", alignItems: "center", width: window.innerWidth, overflowX: "hidden", overflow: "scroll" }}>
+        <List sx={{ flexDirection: "row", display: "flex", alignItems: "center", width: window.innerWidth - people.length * 2 - 20, overflowX: "hidden", overflow: "scroll" }}>
           {people.map((person) => {
             return (
-              <ListItem>
+              <ListItem sx={{ margin: 0, padding: 0 }}>
                 <PersonTile name={person.name} />
               </ListItem>
             )
           })}
-          <Button sx={{ width: 75, height: 50, marginRight: 2 }} color="info" variant="contained" onClick={() => setModalOpen(true)}>Add</Button>
         </List>
         {food.map((item) => {
           return <FoodItem name={item.name} cost={item.cost} />
         })}
-        <Stack direction={"horizontal"}>
-          <Button color="success" variant="contained">Finished</Button>
+        <Stack direction={"horizontal"} spacing={2}>
+          <Button sx={{ width: 75, height: 50, marginRight: 2 }} color="info" variant="contained" onClick={() => setModalOpen(true)}>Add</Button>
+          <Button color="success" variant="contained" href="/summary">Finished</Button>
         </Stack>
       </Stack>
       <Modal
@@ -76,7 +76,7 @@ function FoodItem({ name, cost }) {
 
 function PersonTile({ name }) {
   return (
-    <Box sx={{ border: "1px solid lightgray" }} width={75} height={50} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+    <Box sx={{ border: "1px solid lightgray", marginLeft: 1, marginRight: 1 }} width={150} height={50} display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <Typography>{name}</Typography>
     </Box>
   )
