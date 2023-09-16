@@ -24,7 +24,7 @@ export default function SelectPage() {
   const [people, setPeople] = useState([
     {
       name: "Farooq",
-      venmo: "venmo-farooq"
+      venmo: "venmo-farooq",
     },
     {
       name: "Neil",
