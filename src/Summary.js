@@ -1,6 +1,7 @@
 import { Box, Button, Stack, TextField } from "@mui/material"
 import PaymentInfo from "./PaymentInfo"
 import { useGlobalContext, getAmountDue } from "./GlobalContext"
+import { Box, Button } from "@mui/material"
 
 export default function SummaryPage() {
 	const { people, getAmountDue } = useGlobalContext()

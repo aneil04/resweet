@@ -1,9 +1,9 @@
 import { Box, Button, Divider, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 
 export default function SelectPage() {
-  const { food, people, addPerson, toggleFood } = useGlobalContext()
+  const { food, people, addPerson } = useGlobalContext()
 
   const [modalOpen, setModalOpen] = useState(false)
   const [modalName, setModalName] = useState(false);
@@ -17,17 +17,20 @@ export default function SelectPage() {
   return (
     <Box sx={{ width: "100%" }} pt={"20%"} display={"flex"} alignItems={"center"} justifyContent={"center"} flexDirection={"column"}>
       <Stack direction={"column"} alignItems={"center"} spacing={2}>
-        <List sx={{ flexDirection: "row", display: "flex", alignItems: "center", width: window.innerWidth - people.length * 2 - 20, overflowX: "hidden", overflow: "scroll" }}>
-          {people.map((person) => {
+        <List sx={{ flexDirection: "row", display: "flex", alignItems: "center", justifyContent: "center", width: window.innerWidth - people.length * 2 - 20, overflowX: "hidden", overflow: "scroll" }}>
+          {people.length > 0 ? people.map((person) => {
             return (
-              <ListItem sx={{ margin: 0, padding: 0 }}>
+              <ListItem key={person.name} sx={{ margin: 0, padding: 0 }}>
                 <PersonTile name={person.name} />
               </ListItem>
             )
-          })}
+          }) :
+            <Box sx={{ paddingY: 2, paddingX: 5, borderRadius: 2, border: "2px solid #facc15", backgroundColor: "#fefce8"}}>
+              <Typography sx={{ color: "#A16207" }}>No people have been added!</Typography>
+            </Box>}
         </List>
         {food.map((item) => {
-          return <FoodItem name={item.name} cost={item.cost} />
+          return <FoodItem key={item.name} foodName={item.name} cost={item.cost} />
         })}
         <Stack direction={"horizontal"} spacing={2}>
           <Button sx={{ width: 75, height: 50, marginRight: 2 }} color="info" variant="contained" onClick={() => setModalOpen(true)}>Add</Button>
@@ -55,10 +58,26 @@ export default function SelectPage() {
   )
 }
 
-function FoodItem({ name, cost }) {
+function FoodItem({ foodName, cost }) {
+  const { toggleFood, people, currentPerson } = useGlobalContext()
   const [selected, setSelected] = useState(false)
 
+  useEffect(() => {
+    setSelected(false)
+    people.forEach(person => {
+      if (person.name === currentPerson) {
+        person.foodSelected.forEach(food => {
+          if (food === foodName) {
+            console.log(foodName)
+            setSelected(true)
+          }
+        })
+      }
+    });
+  }, [currentPerson])
+
   function handleSelect() {
+    toggleFood(foodName, !selected)
     setSelected(selected => !selected)
   }
 
@@ -67,7 +86,7 @@ function FoodItem({ name, cost }) {
       border: selected ? "3px solid #1976D2" : "1px solid lightgray", borderRadius: 2, marginRight: 10
     }} onClick={() => { handleSelect() }} py={2} px={5} width={230}>
       <Stack direction={"row"} justifyContent={"space-between"}>
-        <Typography>{name}</Typography>
+        <Typography>{foodName}</Typography>
         <Typography>{cost}</Typography>
       </Stack>
     </Box>
@@ -75,8 +94,10 @@ function FoodItem({ name, cost }) {
 }
 
 function PersonTile({ name }) {
+  const { currentPerson, setCurrentPerson } = useGlobalContext()
+
   return (
-    <Box sx={{ border: "1px solid lightgray", marginLeft: 1, marginRight: 1 }} width={150} height={50} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+    <Box onClick={() => { setCurrentPerson(name) }} sx={{ border: name === currentPerson ? "3px solid #1976D2" : "1px solid lightgray", marginLeft: 1, marginRight: 1, borderRadius: 2 }} width={150} height={50} display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <Typography>{name}</Typography>
     </Box>
   )
