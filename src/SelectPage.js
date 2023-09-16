@@ -21,46 +21,36 @@ export default function SelectPage() {
     },
   ])
 
+  const [people, setPeople] = useState([
+    {
+      name: "Farooq",
+      venmo: "venmo-farooq"
+    },
+    {
+      name: "Neil",
+      venmo: "venmo-neil"
+    },
+    {
+      name: "Steven",
+      venmo: "venmo-steven"
+    },
+    {
+      name: "Bowen",
+      venmo: "venmo-bowen"
+    },
+  ])
+
   return (
     <Box sx={{ width: "100%" }} pt={"20%"} display={"flex"} alignItems={"center"} justifyContent={"center"} flexDirection={"column"}>
       <Stack direction={"column"} alignItems={"center"} spacing={2}>
         <List sx={{ flexDirection: "row", display: "flex", alignItems: "center", width: window.innerWidth, overflowX: "hidden", overflow: "scroll" }}>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
-          <ListItem>
-            <PersonTile name="Farooq" />
-          </ListItem>
+          {people.map((person) => {
+            return (
+              <ListItem>
+                <PersonTile name={person.name} />
+              </ListItem>
+            )
+          })}
           <Button sx={{ width: 75, height: 50, marginRight: 2 }} color="info" variant="contained">Add</Button>
         </List>
         {food.map((item) => {
