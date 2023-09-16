@@ -34,29 +34,30 @@ export function GlobalProvider({ children }) {
       count: 4,
     }
   ])
-
-  const [people, setPeople] = useState([
-    {
-      name: "Farooq",
-      venmo: "venmo-farooq",
-      foodSelected: ["Pizza, Cookie", "Milkshake"]
-    },
-    {
-      name: "Bowen",
-      venmo: "venmo-bowen",
-      foodSelected: ["Pizza, Sandwhich, Cookie", "Milkshake"]
-    },
-    {
-      name: "Neil",
-      venmo: "venmo-farooq",
-      foodSelected: ["Pizza, Cookie", "Milkshake"]
-    },
-    {
-      name: "Steven",
-      venmo: "venmo-steven",
-      foodSelected: ["Cookie", "Milkshake"]
-    }
-  ])
+  const [people, setPeople] = useState([])
+  // const [people, setPeople] = useState([
+  //   {
+  //     name: "Farooq",
+  //     venmo: "venmo-farooq",
+  //     foodSelected: ["Pizza", "Cookie", "Milkshake"]
+  //   },
+  //   {
+  //     name: "Bowen",
+  //     venmo: "venmo-bowen",
+  //     foodSelected: ["Pizza", "Sandwhich", "Cookie", "Milkshake"]
+  //   },
+  //   {
+  //     name: "Neil",
+  //     venmo: "venmo-farooq",
+  //     foodSelected: ["Pizza", "Cookie", "Milkshake"]
+  //   },
+  //   {
+  //     name: "Steven",
+  //     venmo: "venmo-steven",
+  //     foodSelected: ["Cookie", "Milkshake"]
+  //   }
+  // ])
+  const [currentPerson, setCurrentPerson] = useState("")
 
   function addPerson(name, venmo) {
     setPeople([...people, {
@@ -66,35 +67,26 @@ export function GlobalProvider({ children }) {
     }])
   }
 
-  function toggleFood(food, name, value) {
+  function toggleFood(foodName, value) {
     const foodTemp = food
     const peopleTemp = people
 
-    if (value) {
-      food.forEach(item => {
-        if (item.name === name) {
-          item.count++;
-        }
-      });
+    food.forEach(item => {
+      if (item.name === foodName) {
+        item.count += value ? 1 : -1;
+      }
+    });
 
-      people.forEach(person => {
-        if (person.name === name) {
-          person.foodSelected.push(food)
-        }
-      })
-    } else {
-      food.forEach(item => {
-        if (item.name === name) {
-          item.count--;
-        }
-      });
+    people.forEach(person => {
+      if (person.name === currentPerson) {
+        if (value) {
+          person.foodSelected.push(foodName)
+        } else {
+          person.foodSelected.filter((foodItem) => foodItem !== foodName)
 
-      people.forEach(person => {
-        if (person.name === name) {
-          person.foodSelected.filter((foodItem) => foodItem !== food)
         }
-      })
-    }
+      }
+    })
 
     setFood(foodTemp)
     setPeople(peopleTemp)
@@ -121,15 +113,18 @@ export function GlobalProvider({ children }) {
     return 0
   }
 
-  function sendVenmo(person){
-      let amount = getAmountDue(person.name);
-      let s = "https://venmo.com/?txn=charge&audience=public&recipients=" + person.venmo + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
+  function sendVenmo(person) {
+    let amount = getAmountDue(person.name);
+    let s = "https://venmo.com/?txn=charge&audience=public&recipients=" + person.venmo + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
   }
 
 
   const value = {
     food,
     people,
+    setPeople,
+    currentPerson,
+    setCurrentPerson,
     addPerson,
     toggleFood
   }

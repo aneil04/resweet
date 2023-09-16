@@ -1,5 +1,4 @@
-import { Box, Button, Stack, TextField } from "@mui/material";
-import logo from "./logo.png"
+import { Box, Button } from "@mui/material";
 
 export default function SummaryPage() {
   return (
