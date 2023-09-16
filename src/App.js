@@ -1,8 +1,13 @@
+import { Route, Routes } from "react-router-dom";
+import ScanPage from "./ScanPage";
+import SelectPage from "./SelectPage";
+
 function App() {
   return (
-    <div className="App">
-      penis
-    </div>
+    <Routes>
+      <Route path="/" element={<ScanPage />} />
+      <Route path="/select" element={<SelectPage />} />
+    </Routes>
   );
 }
 
