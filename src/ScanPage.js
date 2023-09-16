@@ -13,6 +13,7 @@ export default function ScanPage() {
         />
         <Box sx={{ width: "100%", height: "100%", bgcolor: "lightgray", borderRadius: 2 }} />
         <Stack direction={"row"} spacing={2}>
+          {/* add something to enter your name here */}
           <Button variant="contained" sx={{ fontWeight: "bold", fontSize: "20px" }} size="large" href="/select">Scan</Button>
         </Stack>
       </Stack>
