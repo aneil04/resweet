@@ -9,7 +9,7 @@ export default function ScanPage() {
 	const { setCurrentPage, setFood, setPeople } = useGlobalContext()
 	const webcamref = useRef(0)
   const videoConstraints = {
-    facingMode: { exact: "environment" }
+    facingMode: "environment" 
   };
 
   useEffect(() => {
