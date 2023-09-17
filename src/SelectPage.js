@@ -18,19 +18,10 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt"
 import BackButton from "./BackButton"
 
 export default function SelectPage() {
-<<<<<<< HEAD
   const { food, people, addPerson, setCurrentPage } = useGlobalContext()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalName, setModalName] = useState(false)
   const [modalVenmo, setModalVenmo] = useState("")
-=======
-	const { food, people, addPerson, setCurrentPage, setPeople } =
-		useGlobalContext()
-	const navigate = useNavigate()
-	const [modalOpen, setModalOpen] = useState(false)
-	const [modalName, setModalName] = useState(false)
-	const [modalVenmo, setModalVenmo] = useState("")
->>>>>>> b0fe237488eaa1962ba0272abfaddad1c593d0c9
 
 	function handleAddPerson() {
 		addPerson(modalName, modalVenmo)
