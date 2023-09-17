@@ -120,6 +120,10 @@ export function GlobalProvider({ children }) {
 		return price
 	}
 
+	function processData(data) {
+
+	}
+
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
 		let s =
@@ -130,7 +134,7 @@ export function GlobalProvider({ children }) {
 			"&note=ThisisyourbillsplitbyResweet!"
 		return s
 	}
-
+	
 	function saveState() {
 		window.localStorage.setItem("food", JSON.stringify(food))
 		window.localStorage.setItem("people", JSON.stringify(people))
