@@ -7,7 +7,7 @@ export function useGlobalContext() {
 }
 
 export function GlobalProvider({ children }) {
-  const [currentPage, setCurrentPage] = useState(0)
+	const [currentPage, setCurrentPage] = useState(0)
 	const [food, setFood] = useState([
 		{
 			name: "Pizza",
@@ -34,70 +34,70 @@ export function GlobalProvider({ children }) {
 			cost: 4,
 			count: 0,
 		},
-    {
-      name: "Pizza2",
-      cost: 7,
-      count: 0,
-    },
-    {
-      name: "Burger2",
-      cost: 10,
-      count: 0,
-    },
-    {
-      name: "Sandwhich2",
-      cost: 5,
-      count: 0,
-    },
-    {
-      name: "Cookie2",
-      cost: 2,
-      count: 0,
-    },
-    {
-      name: "Milkshake2",
-      cost: 4,
-      count: 0,
-    },
-    {
-      name: "Pizza3",
-      cost: 7,
-      count: 0,
-    },
-    {
-      name: "Burger3",
-      cost: 10,
-      count: 0,
-    },
-    {
-      name: "Sandwhich3",
-      cost: 5,
-      count: 0,
-    },
-    {
-      name: "Cookie3",
-      cost: 2,
-      count: 0,
-    },
-    {
-      name: "Milkshake3",
-      cost: 4,
-      count: 0,
-    },
+		{
+			name: "Pizza2",
+			cost: 7,
+			count: 0,
+		},
+		{
+			name: "Burger2",
+			cost: 10,
+			count: 0,
+		},
+		{
+			name: "Sandwhich2",
+			cost: 5,
+			count: 0,
+		},
+		{
+			name: "Cookie2",
+			cost: 2,
+			count: 0,
+		},
+		{
+			name: "Milkshake2",
+			cost: 4,
+			count: 0,
+		},
+		{
+			name: "Pizza3",
+			cost: 7,
+			count: 0,
+		},
+		{
+			name: "Burger3",
+			cost: 10,
+			count: 0,
+		},
+		{
+			name: "Sandwhich3",
+			cost: 5,
+			count: 0,
+		},
+		{
+			name: "Cookie3",
+			cost: 2,
+			count: 0,
+		},
+		{
+			name: "Milkshake3",
+			cost: 4,
+			count: 0,
+		},
 	])
 	const [people, setPeople] = useState([])
 	const [currentPerson, setCurrentPerson] = useState("")
 
-	function addPerson(name, venmo) {    
-    setPeople([
-      ...people,
+	function addPerson(name, venmo) {
+		setPeople([
+			...people,
 			{
-        name: name,
+				name: name,
 				venmo: venmo,
 				foodSelected: [],
 			},
 		])
-    setCurrentPerson(name)
+		setCurrentPerson(name)
 	}
 
 	function toggleFood(foodName, value) {
@@ -143,7 +143,7 @@ export function GlobalProvider({ children }) {
 			}
 		})
 
-		return price
+		return price.toFixed(2)
 	}
 
 	function sendVenmo(person) {
@@ -167,8 +167,8 @@ export function GlobalProvider({ children }) {
 		toggleFood,
 		getAmountDue,
 		sendVenmo,
-    currentPage,
-    setCurrentPage,
+		currentPage,
+		setCurrentPage,
 	}
 
 	return (
