@@ -5,7 +5,7 @@ export default function PaymentInfo({ name, link, cost }) {
 		<Stack direction="row" spacing={2}>
 			<Typography>{name}</Typography>
 			<Button variant="contained" onClick={() => openNewTab(link)}>
-				pay {name} {cost}
+				Request {name} ${cost}
 			</Button>
 		</Stack>
 	)

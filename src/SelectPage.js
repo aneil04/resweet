@@ -204,7 +204,7 @@ function FoodItem({ foodName, cost }) {
 		>
 			<Stack direction={"row"} justifyContent={"space-between"}>
 				<Typography>{foodName}</Typography>
-				<Typography>{cost}</Typography>
+				<Typography>${cost}</Typography>
 			</Stack>
 		</Box>
 	)
