@@ -1,5 +1,6 @@
 import { Box, Button, Stack } from "@mui/material";
 import logo from "./logo.png"
+import Webcam from "react-webcam";
 
 export default function ScanPage() {
   function handleScan() {
@@ -9,6 +10,7 @@ export default function ScanPage() {
   return (
     <Box sx={{ width: "100%", height: "85vh" }} pt={"20%"} display={"flex"} alignItems={"center"} flexDirection={"column"}>
       <Stack sx={{ width: "80%", height: "90%" }} direction={"column"} alignItems={"center"} spacing={2}>
+        <Webcam />
         <Box
           component="img"
           alt="The house from the offer."
