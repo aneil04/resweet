@@ -8,7 +8,9 @@ import { useGlobalContext } from "./GlobalContext"
 export default function ScanPage() {
 	const { setCurrentPage, setFood } = useGlobalContext()
 	const webcamref = useRef(0)
-
+  const videoConstraints = {
+    facingMode: { exact: "environment" }
+  };
 	function handleScan() {
 		let image = webcamref.current.getScreenshot()
 		let data = new FormData()
@@ -79,7 +81,7 @@ export default function ScanPage() {
 					sx={{ aspectRatio: 389 / 74, width: 300 }}
 				/>
 				<Box>
-					<Webcam screenshotFormat="image/jpeg" ref={webcamref} />
+					<Webcam screenshotFormat="image/jpeg" ref={webcamref} videoConstraints={videoConstraints}/>
 				</Box>
 
 				<Stack direction={"row"} spacing={2}>
