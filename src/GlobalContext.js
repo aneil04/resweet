@@ -60,6 +60,10 @@ export function GlobalProvider({ children }) {
 	const [currentPerson, setCurrentPerson] = useState("")
 
 	function addPerson(name, venmo) {
+		if (people.length === 0) {
+			setCurrentPerson(name)
+		}
+
 		setPeople([
 			...people,
 			{

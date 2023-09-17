@@ -1,4 +1,4 @@
-import { Box, Button, Divider, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import { useNavigate } from "react-router-dom";
@@ -80,6 +80,10 @@ function FoodItem({ foodName, cost }) {
   }, [currentPerson])
 
   function handleSelect() {
+    if (currentPerson === "") {
+      return;
+    }
+    
     toggleFood(foodName, !selected)
     setSelected(selected => !selected)
   }
