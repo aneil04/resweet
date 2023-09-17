@@ -146,9 +146,7 @@ export function GlobalProvider({ children }) {
 		return price.toFixed(2)
 	}
 
-	function processData(data) {
-
-	}
+	function processData(data) {}
 
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
@@ -173,6 +171,7 @@ export function GlobalProvider({ children }) {
 		sendVenmo,
 		currentPage,
 		setCurrentPage,
+		setFood,
 	}
 
 	return (
