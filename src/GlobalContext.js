@@ -136,7 +136,8 @@ export function GlobalProvider({ children }) {
     setCurrentPerson,
     addPerson,
     toggleFood,
-    saveState
+    saveState,
+    getAmountDue,
   }
 
   return (
