@@ -27,7 +27,7 @@ export default function SummaryPage() {
 }
 
 function PersonCard({ person }) {
-  const { getAmountDue, sendVenmo, getPrice } = useGlobalContext()
+  const { getAmountDue, sendVenmo, getPrice ,getSharedPrice} = useGlobalContext()
 
   return (
     <Box sx={{ border: "2px solid lightgray", width: "80%", padding: 2, marginBottom: 2, borderRadius: 2 }}>
@@ -37,7 +37,7 @@ function PersonCard({ person }) {
       </Stack>
       <Stack direction={"column"} width={"100%"} marginTop={1} spacing={1} >
         {person.foodSelected.map((food) => {
-          const price = getPrice(food)
+          const price = getSharedPrice(food).toFixed(2)
           return (
             <Box flexDirection={"row"} display={"flex"} justifyContent={"space-between"}>
               <Typography fontSize={18}>{`${food}`}</Typography>
