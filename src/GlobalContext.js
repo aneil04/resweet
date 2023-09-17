@@ -150,6 +150,16 @@ export function GlobalProvider({ children }) {
 
 	}
 
+  function getPrice(foodName) {
+    for (let x = 0; x < food.length; x++) {
+      if (food[x].name === foodName) {
+        return food[x].cost
+      }
+    }
+
+    return -1
+  }
+
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
 		let s =
@@ -173,6 +183,7 @@ export function GlobalProvider({ children }) {
 		sendVenmo,
 		currentPage,
 		setCurrentPage,
+    getPrice
 	}
 
 	return (

@@ -14,15 +14,3 @@ root.render(
     </GlobalProvider>
   </React.StrictMode>
 );
-
-let people = {
-
-}
-
-
-let recipients = "Farooq-Khan-17"
-let amount = 5
-
-let s1 = "https://venmo.com/?txn=charge&audience=public&recipients=" + recipients + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
-console.log(s1)
-

@@ -17,7 +17,6 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 export default function SelectPage() {
   const { food, people, addPerson, setCurrentPage } = useGlobalContext()
-  const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalName, setModalName] = useState(false)
   const [modalVenmo, setModalVenmo] = useState("")

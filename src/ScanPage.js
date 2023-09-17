@@ -8,9 +8,9 @@ import { useGlobalContext } from "./GlobalContext";
 export default function ScanPage() {
   const { setCurrentPage } = useGlobalContext()
   const webcamref = useRef(0);
-  
+
   function handleScan() {
-    let image=webcamref.current.getScreenshot()
+    let image = webcamref.current.getScreenshot()
     let data = new FormData()
     data.append('document', image)
 
@@ -22,13 +22,15 @@ export default function ScanPage() {
     }).then((response) => {
       console.log(response.data.document.inference.prediction.line_items)
       setCurrentPage(1)
+    }).catch(e => {
+      setCurrentPage(1)
     })
   }
 
   return (
     <Box sx={{ width: "100%", height: "85vh" }} pt={"20%"} display={"flex"} alignItems={"center"} flexDirection={"column"}>
       <Stack sx={{ width: "80%", height: "90%" }} direction={"column"} alignItems={"center"} spacing={2}>
-        <Webcam screenshotFormat="image/jpeg" ref={webcamref}  />
+        <Webcam screenshotFormat="image/jpeg" ref={webcamref} />
         <Box
           component="img"
           alt="The house from the offer."
