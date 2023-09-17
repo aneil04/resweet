@@ -1,7 +1,6 @@
 import {
 	Box,
 	Button,
-	Icon,
 	List,
 	ListItem,
 	Modal,
@@ -12,7 +11,6 @@ import {
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import { useEffect, useState } from "react"
 import { useGlobalContext } from "./GlobalContext"
-import { useNavigate } from "react-router-dom"
 import logo from "./logo.png"
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt"
 import BackButton from "./BackButton"
@@ -43,12 +41,15 @@ export default function SelectPage() {
 				spacing={2}
 				sx={{ paddingBottom: 15 }}
 			>
-				<Box
+				{/* <Box
 					component="img"
 					alt="The house from the offer."
 					src={logo}
 					sx={{ aspectRatio: 389 / 74, width: 300 }}
-				/>
+				/> */}
+        <Box width={"100%"} justifyContent={"center"} marginBottom={2} display={"flex"}>
+          <Typography fontSize={48} fontWeight={"bold"}>Select Foods</Typography>
+        </Box>
 				<List
 					sx={{
 						flexDirection: "row",
