@@ -22,7 +22,6 @@ export default function SummaryPage() {
   )
 }
 
-
 function PersonCard({ person }) {
   const { getAmountDue, sendVenmo, getPrice } = useGlobalContext()
 

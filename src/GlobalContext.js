@@ -183,7 +183,8 @@ export function GlobalProvider({ children }) {
 		sendVenmo,
 		currentPage,
 		setCurrentPage,
-    getPrice
+    getPrice,
+		setFood,
 	}
 
 	return (
