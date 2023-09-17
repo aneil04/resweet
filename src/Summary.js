@@ -60,7 +60,7 @@ function PersonCard({ person }) {
 				</Typography>
 				<Button
 					variant="contained"
-					onClick={() => window.open(sendVenmo(person.name))}
+					onClick={() => window.open(sendVenmo(person))}
 				>
 					Request ${getAmountDue(person.name)}
 				</Button>
