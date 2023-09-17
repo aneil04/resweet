@@ -63,21 +63,16 @@ export default function ScanPage() {
 				alignItems={"center"}
 				spacing={2}
 			>
-				<Webcam screenshotFormat="image/jpeg" ref={webcamref} />
 				<Box
 					component="img"
 					alt="The house from the offer."
 					src={logo}
 					sx={{ aspectRatio: 389 / 74, width: 300 }}
 				/>
-				<Box
-					sx={{
-						width: "100%",
-						height: "100%",
-						bgcolor: "lightgray",
-						borderRadius: 2,
-					}}
-				/>
+				<Box sx={{ width: "95%" }} display>
+					<Webcam screenshotFormat="image/jpeg" ref={webcamref} />
+				</Box>
+
 				<Stack direction={"row"} spacing={2}>
 					<Button
 						onClick={() => handleScan()}
