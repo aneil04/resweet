@@ -157,6 +157,14 @@ export function GlobalProvider({ children }) {
 
 		return -1
 	}
+	function getSharedPrice(foodName) {
+		for (let x = 0; x < food.length; x++) {
+			if (food[x].name === foodName) {
+				return food[x].cost / food[x].count
+			}
+		}
+		return -1
+	}
 
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
@@ -182,6 +190,7 @@ export function GlobalProvider({ children }) {
 		currentPage,
 		setCurrentPage,
 		getPrice,
+		getSharedPrice,
 		setFood,
 	}
 

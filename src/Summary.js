@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material"
 import { useGlobalContext } from "./GlobalContext"
+import BackButton from "./BackButton"
 
 export default function SummaryPage() {
 	const { people } = useGlobalContext()
@@ -26,12 +27,16 @@ export default function SummaryPage() {
 			{people.map((person) => {
 				return <PersonCard person={person} />
 			})}
+			<Box justifySelf={"flex-start"} width={"100%"}>
+				<BackButton />
+			</Box>
 		</Box>
 	)
 }
 
 function PersonCard({ person }) {
-	const { getAmountDue, sendVenmo, getPrice } = useGlobalContext()
+	const { getAmountDue, sendVenmo, getPrice, getSharedPrice } =
+		useGlobalContext()
 
 	return (
 		<Box

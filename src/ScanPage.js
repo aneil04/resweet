@@ -68,7 +68,7 @@ export default function ScanPage() {
 	}
 
 	return (
-		<Box
+		<Box 
 			sx={{ width: "100%", height: "85vh" }}
 			pt={"20%"}
 			display={"flex"}
