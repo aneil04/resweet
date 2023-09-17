@@ -29,7 +29,7 @@ function PersonCard({ person }) {
     <Box sx={{ border: "2px solid lightgray", width: "80%", padding: 2, marginBottom: 2, borderRadius: 2 }}>
       <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} sx={{ paddingBottom: 1.5, borderBottom: "2px solid lightgray" }}>
         <Typography fontWeight={"bold"} fontSize={22}>{person.name}</Typography>
-        <Button variant="contained" onClick={() => window.open(sendVenmo(person.name))}>Request ${getAmountDue(person.name)}</Button>
+        <Button variant="contained" onClick={() => window.open(sendVenmo(person))}>Request ${getAmountDue(person.name)}</Button>
       </Stack>
       <Stack direction={"column"} width={"100%"} marginTop={1} spacing={1} >
         {person.foodSelected.map((food) => {
