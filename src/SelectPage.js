@@ -80,7 +80,7 @@ export default function SelectPage() {
 							}}
 						>
 							<Typography sx={{ color: "#A16207" }}>
-								No people have been added!
+								It's lonely in here!
 							</Typography>
 						</Box>
 					)}

@@ -8,26 +8,27 @@ export default function SummaryPage() {
 	return (
 		<Box
 			sx={{ width: "100%", height: "85vh" }}
-			pt={"15%"}
+			pt={"10%"}
 			display={"flex"}
 			alignItems={"center"}
 			flexDirection={"column"}
 		>
 			<Box
-				borderBottom={"1px solid gray"}
-				width={"100%"}
+				borderBottom={"2px solid lightgray"}
+				width={"95%"}
 				justifyContent={"center"}
 				marginBottom={2}
+				paddingBottom={2}
 				display={"flex"}
 			>
-				<Typography fontSize={48} fontWeight={"bold"}>
+				<Typography variant="h3" fontWeight={"bold"}>
 					Summary
 				</Typography>
 			</Box>
 			{people.map((person) => {
 				return <PersonCard person={person} />
 			})}
-			<Box justifySelf={"flex-start"} width={"100%"}>
+			<Box justifySelf={"flex-start"} width={"95%"}>
 				<BackButton />
 			</Box>
 		</Box>
