@@ -39,9 +39,18 @@ export default function ScanPage() {
 					response.data.document.inference.prediction.total_tax.value
 				let tax_percent = total_tax / total_net
 				let food_arr = []
+        let name_set = []
 				cost_data.map((item) => {
+          let temp=item.description
+          let x=2
+          while(name_set.includes(temp))
+          {
+            temp=item.description+""+x
+            x=x+1
+          }
+          name_set.push(temp)
 					let food = {
-						name: item.description,
+						name: temp,
 						cost: (item.total_amount * (1 + tax_percent)).toFixed(
 							2
 						),
