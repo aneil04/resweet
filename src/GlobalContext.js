@@ -146,6 +146,10 @@ export function GlobalProvider({ children }) {
 		return price.toFixed(2)
 	}
 
+	function processData(data) {
+
+	}
+
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
 		let s =
