@@ -48,12 +48,11 @@ export default function SelectPage() {
         aria-describedby="modal-modal-description">
         <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: 'translate(-50%, -50%)', width: "80%", bgcolor: "white", borderRadius: 2, padding: 2 }} alignItems={"center"} display={"flex"} justifyContent={"center"}>
           <Stack direction={"column"} sx={{ flexGrow: 1 }} spacing={2}>
-            <Typography fontSize={25} fontWeight={"bold"}>Add a new person</Typography>
+            <Typography fontSize={25} fontWeight={"bold"}>Add a New Person</Typography>
             <TextField onChange={(e) => setModalName(e.target.value)} label="What's your name" />
             <TextField onChange={(e) => setModalVenmo(e.target.value)} label="Enter your venmo" />
             <Stack direction={"horizontal"}>
-              <Button sx={{ flexGrow: 1, marginRight: 2, fontSize: 16, fontWeight: "bold" }} color="error" variant="outlined" onClick={() => handleAddPerson()}>Don't have venmo</Button>
-              <Button sx={{ flexGrow: 1, fontSize: 16, fontWeight: "bold" }} color="success" variant="contained" onClick={() => handleAddPerson()}>Confirm</Button>
+              <Button size="large" sx={{ flexGrow: 1, fontSize: 16, fontWeight: "bold" }} color="success" variant="contained" onClick={() => handleAddPerson()}>Confirm</Button>
             </Stack>
           </Stack>
         </Box>

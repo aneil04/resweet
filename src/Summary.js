@@ -1,9 +1,15 @@
 import { Box, Button, Stack, TextField } from "@mui/material"
 import PaymentInfo from "./PaymentInfo"
 import { useGlobalContext, getAmountDue } from "./GlobalContext"
+import { useEffect } from "react"
 
 export default function SummaryPage() {
-  const { people, getAmountDue } = useGlobalContext()
+  const { people, getAmountDue, parseState } = useGlobalContext()
+
+  useEffect(() => {
+    parseState()
+  }, [])
+
   return (
     <Box
       sx={{ width: "100%", height: "85vh" }}

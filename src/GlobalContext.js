@@ -11,27 +11,27 @@ export function GlobalProvider({ children }) {
     {
       name: "Pizza",
       cost: 7,
-      count: 2,
+      count: 0,
     },
     {
       name: "Burger",
       cost: 10,
-      count: 1,
+      count: 0,
     },
     {
       name: "Sandwhich",
       cost: 5,
-      count: 1,
+      count: 0,
     },
     {
       name: "Cookie",
       cost: 2,
-      count: 3,
+      count: 0,
     },
     {
       name: "Milkshake",
       cost: 4,
-      count: 4,
+      count: 0,
     }
   ])
   const [people, setPeople] = useState([])
@@ -93,10 +93,11 @@ export function GlobalProvider({ children }) {
   }
 
   function getAmountDue(name) {
+    let price = 0
+
     people.forEach(person => {
       if (person.name === name) {
         const foodsSelected = person.foodSelected
-        let price = 0
 
         foodsSelected.forEach(selectedFood => {
           food.forEach(food => {
@@ -105,12 +106,10 @@ export function GlobalProvider({ children }) {
             }
           })
         })
-
-        return price
       }
     })
 
-    return 0
+    return price
   }
 
   function sendVenmo(person) {
@@ -125,7 +124,7 @@ export function GlobalProvider({ children }) {
 
   function parseState() {
     setFood(JSON.parse(window.localStorage.getItem('food')))
-    setFood(JSON.parse(window.localStorage.getItem('people')))
+    setPeople(JSON.parse(window.localStorage.getItem('people')))
   }
 
   const value = {
@@ -138,6 +137,7 @@ export function GlobalProvider({ children }) {
     toggleFood,
     saveState,
     getAmountDue,
+    parseState
   }
 
   return (

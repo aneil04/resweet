@@ -4,9 +4,13 @@ export default function PaymentInfo({ name, link, cost }) {
 	return (
 		<Stack direction="row" spacing={2}>
 			<Typography>{name}</Typography>
-			<Button variant="contained" href={link}>
+			<Button variant="contained" onClick={() => openNewTab(link)}>
 				pay {name} {cost}
 			</Button>
 		</Stack>
 	)
+}
+
+function openNewTab(link){
+  window.open(link);
 }
