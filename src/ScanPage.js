@@ -2,15 +2,21 @@ import { Box, Button, Stack } from "@mui/material"
 import logo from "./logo.png"
 import Webcam from "react-webcam"
 import axios from "axios"
-import React, { useState, useRef, useCallback } from "react"
+import React, { useState, useRef, useCallback, useEffect } from "react"
 import { useGlobalContext } from "./GlobalContext"
 
 export default function ScanPage() {
-	const { setCurrentPage, setFood } = useGlobalContext()
+	const { setCurrentPage, setFood, setPeople } = useGlobalContext()
 	const webcamref = useRef(0)
   const videoConstraints = {
     facingMode: { exact: "environment" }
   };
+
+  useEffect(() => {
+    setPeople([])
+    setFood([])
+  }, [])
+
 	function handleScan() {
 		let image = webcamref.current.getScreenshot()
 		let data = new FormData()
