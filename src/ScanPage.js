@@ -69,7 +69,7 @@ export default function ScanPage() {
 					src={logo}
 					sx={{ aspectRatio: 389 / 74, width: 300 }}
 				/>
-				<Box sx={{ width: "95%" }} display>
+				<Box>
 					<Webcam screenshotFormat="image/jpeg" ref={webcamref} />
 				</Box>
 
