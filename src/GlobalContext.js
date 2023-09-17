@@ -146,19 +146,17 @@ export function GlobalProvider({ children }) {
 		return price.toFixed(2)
 	}
 
-	function processData(data) {
+	function processData(data) {}
 
+	function getPrice(foodName) {
+		for (let x = 0; x < food.length; x++) {
+			if (food[x].name === foodName) {
+				return food[x].cost
+			}
+		}
+
+		return -1
 	}
-
-  function getPrice(foodName) {
-    for (let x = 0; x < food.length; x++) {
-      if (food[x].name === foodName) {
-        return food[x].cost
-      }
-    }
-
-    return -1
-  }
 
 	function sendVenmo(person) {
 		let amount = getAmountDue(person.name)
@@ -167,7 +165,7 @@ export function GlobalProvider({ children }) {
 			person.venmo +
 			"&amount=" +
 			amount +
-			"&note=ThisisyourbillsplitbyResweet!"
+			"&note=This is your bill split by Resweet!"
 		return s
 	}
 
@@ -183,7 +181,7 @@ export function GlobalProvider({ children }) {
 		sendVenmo,
 		currentPage,
 		setCurrentPage,
-    getPrice,
+		getPrice,
 		setFood,
 	}
 

@@ -8,14 +8,16 @@ import { useGlobalContext } from "./GlobalContext"
 export default function ScanPage() {
 	const { setCurrentPage, setFood, setPeople } = useGlobalContext()
 	const webcamref = useRef(0)
-  const videoConstraints = {
-    facingMode: "environment" 
-  };
+	const videoConstraints = {
+		facingMode: "environment",
+		width: 300,
+		height: 480,
+	}
 
-  useEffect(() => {
-    setPeople([])
-    setFood([])
-  }, [])
+	useEffect(() => {
+		setPeople([])
+		setFood([])
+	}, [])
 
 	function handleScan() {
 		let image = webcamref.current.getScreenshot()
@@ -42,16 +44,15 @@ export default function ScanPage() {
 					response.data.document.inference.prediction.total_tax.value
 				let tax_percent = total_tax / total_net
 				let food_arr = []
-        let name_set = []
+				let name_set = []
 				cost_data.map((item) => {
-          let temp=item.description
-          let x=2
-          while(name_set.includes(temp))
-          {
-            temp=item.description+""+x
-            x=x+1
-          }
-          name_set.push(temp)
+					let temp = item.description
+					let x = 2
+					while (name_set.includes(temp)) {
+						temp = item.description + "" + x
+						x = x + 1
+					}
+					name_set.push(temp)
 					let food = {
 						name: temp,
 						cost: (item.total_amount * (1 + tax_percent)).toFixed(
@@ -87,7 +88,12 @@ export default function ScanPage() {
 					sx={{ aspectRatio: 389 / 74, width: 300 }}
 				/>
 				<Box>
-					<Webcam screenshotFormat="image/jpeg" ref={webcamref} videoConstraints={videoConstraints}/>
+					<Webcam
+						screenshotFormat="image/jpeg"
+						ref={webcamref}
+						videoConstraints={videoConstraints}
+						style={{ borderRadius: 5 }}
+					/>
 				</Box>
 
 				<Stack direction={"row"} spacing={2}>
