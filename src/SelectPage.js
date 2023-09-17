@@ -1,10 +1,11 @@
 import { Box, Button, Divider, List, ListItem, Modal, Stack, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SelectPage() {
-  const { food, people, addPerson } = useGlobalContext()
-
+  const { food, people, addPerson, saveState } = useGlobalContext()
+  const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalName, setModalName] = useState(false);
   const [modalVenmo, setModalVenmo] = useState("")
@@ -25,16 +26,19 @@ export default function SelectPage() {
               </ListItem>
             )
           }) :
-            <Box sx={{ paddingY: 2, paddingX: 5, borderRadius: 2, border: "2px solid #facc15", backgroundColor: "#fefce8"}}>
+            <Box sx={{ paddingY: 2, paddingX: 5, borderRadius: 2, border: "2px solid #facc15", backgroundColor: "#fefce8" }}>
               <Typography sx={{ color: "#A16207" }}>No people have been added!</Typography>
             </Box>}
         </List>
         {food.map((item) => {
           return <FoodItem key={item.name} foodName={item.name} cost={item.cost} />
         })}
-        <Stack direction={"horizontal"} spacing={2}>
-          <Button sx={{ width: 75, height: 50, marginRight: 2 }} color="info" variant="contained" onClick={() => setModalOpen(true)}>Add</Button>
-          <Button color="success" variant="contained" href="/summary">Finished</Button>
+        <Stack direction={"row"} spacing={2}>
+          <Button size="large" color="info" variant="contained" onClick={() => setModalOpen(true)}>Add</Button>
+          <Button size="large" color="success" variant="contained" onClick={() => {
+            saveState()
+            navigate("/summary")
+          }}>Finished</Button>
         </Stack>
       </Stack>
       <Modal

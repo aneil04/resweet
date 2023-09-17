@@ -118,6 +118,15 @@ export function GlobalProvider({ children }) {
     let s = "https://venmo.com/?txn=charge&audience=public&recipients=" + person.venmo + "&amount=" + amount + "&note=ThisisyourbillsplitbyResweet!"
   }
 
+  function saveState() {
+    window.localStorage.setItem('food', JSON.stringify(food))
+    window.localStorage.setItem('people', JSON.stringify(people))
+  }
+
+  function parseState() {
+    setFood(JSON.parse(window.localStorage.getItem('food')))
+    setFood(JSON.parse(window.localStorage.getItem('people')))
+  }
 
   const value = {
     food,
@@ -126,7 +135,8 @@ export function GlobalProvider({ children }) {
     currentPerson,
     setCurrentPerson,
     addPerson,
-    toggleFood
+    toggleFood,
+    saveState
   }
 
   return (
