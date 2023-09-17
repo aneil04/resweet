@@ -3,9 +3,12 @@ import logo from "./logo.png"
 import Webcam from "react-webcam";
 import axios from "axios";
 import React, { useState, useRef, useCallback } from "react";
+import { useGlobalContext } from "./GlobalContext";
 
 export default function ScanPage() {
+  const { setCurrentPage } = useGlobalContext()
   const webcamref = useRef(0);
+  
   function handleScan() {
     let image=webcamref.current.getScreenshot()
     let data = new FormData()
@@ -18,6 +21,7 @@ export default function ScanPage() {
       }
     }).then((response) => {
       console.log(response.data.document.inference.prediction.line_items)
+      setCurrentPage(1)
     })
   }
 
