@@ -1,10 +1,13 @@
 import { Box, Button, Stack } from "@mui/material";
 import logo from "./logo.png"
 import Webcam from "react-webcam";
+import { useGlobalContext } from "./GlobalContext";
 
 export default function ScanPage() {
+  const { setCurrentPage } = useGlobalContext()
+
   function handleScan() {
-    alert("scan")
+    setCurrentPage(1)
   }
 
   return (
@@ -19,7 +22,7 @@ export default function ScanPage() {
         />
         <Box sx={{ width: "100%", height: "100%", bgcolor: "lightgray", borderRadius: 2 }} />
         <Stack direction={"row"} spacing={2}>
-          <Button onClick={() => handleScan()} variant="contained" sx={{ fontWeight: "bold", fontSize: "20px" }} size="large" href="/select">Scan</Button>
+          <Button onClick={() => handleScan()} variant="contained" sx={{ fontWeight: "bold", fontSize: "20px" }} size="large">Scan</Button>
         </Stack>
       </Stack>
     </Box>

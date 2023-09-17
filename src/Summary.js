@@ -4,12 +4,8 @@ import { useGlobalContext, getAmountDue } from "./GlobalContext"
 import { useEffect } from "react"
 
 export default function SummaryPage() {
-	const { people, getAmountDue, parseState, sendVenmo } = useGlobalContext()
-
-	useEffect(() => {
-		parseState()
-	}, [])
-
+	const { people, getAmountDue, sendVenmo } = useGlobalContext()
+  
 	return (
 		<Box
 			sx={{ width: "100%", height: "85vh" }}
