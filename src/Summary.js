@@ -2,10 +2,11 @@ import { Box, Button, Stack, TextField } from "@mui/material"
 import PaymentInfo from "./PaymentInfo"
 import { useGlobalContext, getAmountDue } from "./GlobalContext"
 import { useEffect } from "react"
+import BackButton from "./BackButton"
 
 export default function SummaryPage() {
 	const { people, getAmountDue, sendVenmo } = useGlobalContext()
-  
+
 	return (
 		<Box
 			sx={{ width: "100%", height: "85vh" }}
@@ -24,6 +25,7 @@ export default function SummaryPage() {
 					/>
 				)
 			})}
+			<BackButton />
 		</Box>
 	)
 }
