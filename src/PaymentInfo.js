@@ -11,6 +11,6 @@ export default function PaymentInfo({ name, link, cost }) {
 	)
 }
 
-function openNewTab(link){
-  window.open(link);
+function openNewTab(link) {
+	window.open(link)
 }

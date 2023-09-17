@@ -128,6 +128,7 @@ export function GlobalProvider({ children }) {
 			"&amount=" +
 			amount +
 			"&note=ThisisyourbillsplitbyResweet!"
+		return s
 	}
 
 	function saveState() {
