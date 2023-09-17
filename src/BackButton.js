@@ -8,6 +8,7 @@ export default function BackButton() {
 	return (
 		<Button
 			variant="contained"
+      sx={{ fontSize: 18 }}
 			startIcon={<ArrowBackIosIcon />}
 			onClick={() => {
 				setCurrentPage(currentPage - 1)
